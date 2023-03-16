@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <form [formGroup]="loginForm" (ngSubmit)="signing()">
+      <div class="mb-3">
+        <label for="userName" class="form-label">User Name</label>
+        <input class="form-control" type="text" formControlName="userName" />
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input class="form-control" type="text" formControlName="password" />
+      </div>
+
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          formControlName="rememberMe"
+        />
+        <label class="form-check-label" for="flexCheckDefault"
+          >Beni hatırla</label
+        >
+      </div>
+
+      <label class="form-label" for="country">Ülke:</label>
+      <select class="form-select" formControlName="country">
+        <option *ngFor="let item of countryMenu" value="{{ item.value }}">
+          {{ item.text }}
+        </option>
+      </select>
+
+      <div *ngFor="let item of genderMenu">
+        <div class="form-check">
+          <input
+            formControlName="gender"
+            class="form-check-input"
+            type="radio"
+            [value]="item.value"
+          />
+          <label class="form-check-label" for="flexRadioDefault1">{{
+            item.text
+          }}</label>
+        </div>
+      </div>
+
+      <button class="btn btn-primary mt-5" type="submit">Giriş</button>
+    </form>
+  </div>
+</div>

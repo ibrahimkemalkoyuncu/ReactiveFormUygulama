@@ -1,14 +1,57 @@
 <div class="row">
   <div class="col-md-8 offset-md-2">
     <form [formGroup]="loginForm" (ngSubmit)="signing()">
+      <!-- begin userName -->
+
       <div class="mb-3">
         <label for="userName" class="form-label">User Name</label>
         <input class="form-control" type="text" formControlName="userName" />
       </div>
 
+      <!-- begin userName  -->
+      <div class="alert alert-danger" *ngIf="loginForm.get('userName')?.invalid && (loginForm.get('userName')?.dirty || loginForm.get('userName')?.touched)">
+
+        <small *ngIf="loginForm.get('userName')?.errors?.['required']">Kullanıcı adı alanı zorunludur</small>
+      </div>
+
+      <div class="alert alert-info">
+        <ul>
+          <li>Valid : {{ loginForm.get("userName")?.valid }}</li>
+          <li>InValid : {{ loginForm.get("userName")?.invalid }}</li>
+          <li>Errors : {{ loginForm.get("userName")?.errors | json }}</li>
+          <li>Dirty : {{ loginForm.get("userName")?.dirty }}</li>
+          <li>Pristine : {{ loginForm.get("userName")?.pristine }}</li>
+          <li>Touched : {{ loginForm.get("userName")?.touched }}</li>
+          <li>UnTouched : {{ loginForm.get("userName")?.untouched }}</li>
+          <li>value : {{ loginForm.get("userName")?.value }}</li>
+        </ul>
+      </div>
+
+      <!-- end userName -->
+
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
         <input class="form-control" type="text" formControlName="password" />
+      </div>
+
+      <div class="alert alert-danger" *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+
+        <small *ngIf="loginForm.get('password')?.errors?.['required']">Password alanı zorunludur</small>
+
+        <small *ngIf="loginForm.get('password')?.errors?.['minlength']">Password alanı en az 4 karakter olabilir.</small>
+      </div>
+
+      <div class="alert alert-info">
+        <ul>
+          <li>Valid : {{ loginForm.get("password")?.valid }}</li>
+          <li>InValid : {{ loginForm.get("password")?.invalid }}</li>
+          <li>Errors : {{ loginForm.get("password")?.errors | json }}</li>
+          <li>Dirty : {{ loginForm.get("password")?.dirty }}</li>
+          <li>Pristine : {{ loginForm.get("password")?.pristine }}</li>
+          <li>Touched : {{ loginForm.get("userNpasswordame")?.touched }}</li>
+          <li>UnTouched : {{ loginForm.get("password")?.untouched }}</li>
+          <li>value : {{ loginForm.get("password")?.value }}</li>
+        </ul>
       </div>
 
       <div class="form-check">
